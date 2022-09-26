@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/rlGame"
+        android:layout_width="400dp"
+        android:layout_height="200dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/corners">
+
+        <ImageView
+            android:id="@+id/ivGameCover"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@id/ivGameCover"
+            android:layout_marginEnd="30dp"
+            android:paddingLeft="20dp"
+            android:text="Game title"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_below="@+id/tvTitle"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="30dp"
+            android:paddingLeft="20dp"
+            android:text="Description"
+            android:textColor="#7a8288" />
+
+        <TextView
+            android:id="@+id/tvGenre"
+            android:layout_width="60dp"
+            android:layout_height="20dp"
+            android:layout_below="@+id/tvDescription"
+            android:layout_marginLeft="220dp"
+            android:layout_marginTop="10dp"
+            android:text="Genre"
+            android:textColor="#F89404"
+            android:textSize="10dp" />
+
+        <TextView
+            android:id="@+id/tvPlatform"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/tvDescription"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/tvGenre"
+            android:paddingLeft="8dp"
+            android:text="Platform"
+            android:textColor="#F89404"
+            android:textSize="10dp" />
+
+
+    </RelativeLayout>
+</RelativeLayout>

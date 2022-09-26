@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".MainActivity">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvGames"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="10dp" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/tool_bar">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btnFilter"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="30dp"
+                android:background="@android:drawable/ic_menu_sort_by_size" />
+
+            <Button
+                android:id="@+id/btnFav"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="40dp"
+                android:layout_toEndOf="@+id/btnFilter"
+                android:background="@drawable/favorites" />
+
+            <Button
+                android:id="@+id/btnDeals"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="40dp"
+                android:layout_toEndOf="@+id/btnFav"
+                android:background="@drawable/corners"
+                android:text="Deals"
+                android:textAlignment="center"
+                android:textColor="#8A8D8F"
+                android:textSize="15dp" />
+
+
+            <SearchView
+                android:id="@+id/svGames"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="40dp"
+                android:layout_toEndOf="@id/btnDeals" />
+
+        </RelativeLayout>
+
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
+
+
+</RelativeLayout>
