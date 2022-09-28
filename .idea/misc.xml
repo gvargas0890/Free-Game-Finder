@@ -11,11 +11,18 @@
         <entry key="app/src/main/res/drawable/ic_baseline_add_circle_24.xml" value="0.1435" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1435" />
         <entry key="app/src/main/res/drawable/tool_bar.xml" value="0.1435" />
+        <entry key="app/src/main/res/layout/activity_deals.xml" value="0.2028985507246377" />
         <entry key="app/src/main/res/layout/activity_fav.xml" value="0.1828774062816616" />
+        <entry key="app/src/main/res/layout/activity_filter.xml" value="0.3591485507246377" />
+        <entry key="app/src/main/res/layout/activity_filters.xml" value="0.3591485507246377" />
         <entry key="app/src/main/res/layout/activity_game_info.xml" value="0.3591485507246377" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3591485507246377" />
+        <entry key="app/src/main/res/layout/alert_dialog_layout.xml" value="0.2028985507246377" />
+        <entry key="app/src/main/res/layout/deals_layout.xml" value="0.3591485507246377" />
+        <entry key="app/src/main/res/layout/dialog_layout.xml" value="0.2028985507246377" />
         <entry key="app/src/main/res/layout/favorites_layout.xml" value="0.2028985507246377" />
         <entry key="app/src/main/res/layout/fragment_blank.xml" value="0.3591485507246377" />
+        <entry key="app/src/main/res/layout/fragment_filters.xml" value="0.3591485507246377" />
         <entry key="app/src/main/res/layout/games_layout.xml" value="0.33" />
       </map>
     </option>

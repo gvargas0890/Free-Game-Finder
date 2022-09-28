@@ -41,12 +41,12 @@ public class GamesAdapter extends RecyclerView.Adapter<GamesAdapter.GamesHolder>
         holder.tvDescription.setText(gamesList.get(position).getShortDescription());
         holder.tvGenre.setText(gamesList.get(position).getGenre());
         holder.tvPlatform.setText(gamesList.get(position).getPlatform());
-        holder.saveBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listener.onClickSave(gamesList.get(position), position);
-            }
-        });
+    holder.saveBtn.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            listener.onClickSave(gamesList.get(position), position);
+        }
+    });
 
         Glide.with(context)
                 .load(gamesList.get(position).getThumbnail())
