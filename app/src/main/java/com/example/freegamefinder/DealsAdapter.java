@@ -15,10 +15,10 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 public class DealsAdapter extends RecyclerView.Adapter<DealsAdapter.DealsHolder> {
-    List<Deals> dealsList;
+    List<Deal> dealsList;
     Context context;
 
-    public DealsAdapter(List<Deals> dealsList, Context context) {
+    public DealsAdapter(List<Deal> dealsList, Context context) {
         this.dealsList = dealsList;
         this.context = context;
     }

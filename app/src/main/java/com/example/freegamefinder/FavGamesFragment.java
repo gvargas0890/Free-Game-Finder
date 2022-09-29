@@ -1,12 +1,17 @@
 package com.example.freegamefinder;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -14,27 +19,41 @@ import org.json.JSONException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FavGamesActivity extends AppCompatActivity {
+public class FavGamesFragment extends Fragment {
     SaveUtil saving = new SaveUtil();
     FavoritesAdapter adapter;
     RecyclerView rvFavGames;
+    Button btnPlay;
+    Button btnAdd;
+    View view;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fav);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
-        SharedPreferences prefs = getSharedPreferences("", MODE_PRIVATE);
+        view = inflater.inflate(R.layout.fragment_fav_games, container, false);
+
+        rvFavGames = view.findViewById(R.id.rvFavGames);
+        btnAdd = view.findViewById(R.id.btnAdd);
+        btnPlay = view.findViewById(R.id.btnPlay);
+
+        SharedPreferences prefs = getActivity().getSharedPreferences("", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         String gameArray = prefs.getString("game", "");
 
-        rvFavGames = findViewById(R.id.rvFavGames);
         List<Game> gamesList = new ArrayList<>();
 
         saving.populateGameArray(gameArray, gamesList);
 
-        rvFavGames.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new FavoritesAdapter(gamesList, this, new FavoritesAdapter.OnGameLongClickListener() {
+//        btnPlay.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
+
+        rvFavGames.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        adapter = new FavoritesAdapter(gamesList, view.getContext(), new FavoritesAdapter.OnGameLongClickListener() {
             @Override
             public void onGameLongClick(int position) {
                 gamesList.remove(position);
@@ -57,10 +76,6 @@ public class FavGamesActivity extends AppCompatActivity {
         });
         rvFavGames.setAdapter(adapter);
 
-    }
-
-    @Override
-    public void onBackPressed() {
-        startActivity(new Intent(FavGamesActivity.this, MainActivity.class));
+        return view;
     }
 }

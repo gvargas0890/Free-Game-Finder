@@ -40,16 +40,16 @@ public class GamesApi {
 
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                List<Games> list = new ArrayList<>();
+                List<Game> list = new ArrayList<>();
                 GamesResponse gamesResponse = new GamesResponse();
-                Games games = null;
+                Game games = null;
 
                 try {
                     JSONArray gamesArray = new JSONArray(response.body().string());
                     for(int i = 0; i < gamesArray.length(); i++) {
                         JSONObject gamesObjects = gamesArray.getJSONObject(i);
 
-                        games = new Games();
+                        games = new Game();
 
                         String title = gamesObjects.optString("title");
                         games.setTitle(title);

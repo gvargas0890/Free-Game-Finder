@@ -6,67 +6,80 @@
     android:layout_height="match_parent"
     android:background="@color/black"
     tools:context=".MainActivity"
-    android:id="@+id/relativeLayout">
+    android:id="@+id/rlMain">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvGames"
+    <RelativeLayout
+        android:id="@+id/rlFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="10dp" />
+        android:layout_above="@+id/toolBar">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvGames"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="10dp"/>
+
+    </RelativeLayout>
 
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/tool_bar">
+        android:layout_alignParentBottom="true">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/btnFilter"
+                android:id="@+id/btnHome"
                 android:layout_width="50dp"
                 android:layout_height="30dp"
                 android:layout_marginStart="30dp"
-                android:background="@android:drawable/ic_menu_sort_by_size" />
+                android:background="@drawable/ic_baseline_home_24"/>
 
             <Button
                 android:id="@+id/btnFav"
-                android:layout_width="50dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="40dp"
-                android:layout_toEndOf="@+id/btnFilter"
+                android:layout_width="40dp"
+                android:layout_height="25dp"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="4dp"
+                android:layout_toEndOf="@+id/btnHome"
                 android:background="@drawable/favorites" />
 
             <Button
                 android:id="@+id/btnDeals"
                 android:layout_width="50dp"
                 android:layout_height="30dp"
-                android:layout_marginLeft="40dp"
+                android:layout_marginLeft="70dp"
                 android:layout_toEndOf="@+id/btnFav"
                 android:background="@drawable/corners"
                 android:text="Deals"
                 android:textAlignment="center"
                 android:textColor="#8A8D8F"
-                android:textSize="15dp" />
+                android:textSize="15dp"/>
 
 
-            <SearchView
-                android:id="@+id/svGames"
-                android:layout_width="50dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="40dp"
-                android:layout_toEndOf="@id/btnDeals" />
+<!--            <SearchView-->
+<!--                android:id="@+id/svGames"-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:layout_marginLeft="40dp"-->
+<!--                android:layout_toEndOf="@id/btnDeals" />-->
 
         </RelativeLayout>
 
     </androidx.appcompat.widget.Toolbar>
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"/>
+<!--    <ProgressBar-->
+<!--        android:id="@+id/progressBar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:visibility="gone"-->
+<!--        android:layout_centerInParent="true"/>-->
+
+
 
 </RelativeLayout>

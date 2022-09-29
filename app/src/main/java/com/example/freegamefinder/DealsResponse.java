@@ -3,13 +3,13 @@ package com.example.freegamefinder;
 import java.util.List;
 
 public class DealsResponse {
-    List<Deals> dealsList;
+    List<Deal> dealsList;
 
-    public List<Deals> getDealsList() {
+    public List<Deal> getDealsList() {
         return dealsList;
     }
 
-    public void setDealsList(List<Deals> dealsList) {
+    public void setDealsList(List<Deal> dealsList) {
         this.dealsList = dealsList;
     }
 }

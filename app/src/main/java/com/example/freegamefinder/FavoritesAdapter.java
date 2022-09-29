@@ -5,7 +5,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -18,11 +17,11 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.FavoriteHolder> {
-    List<Games> gamesList;
+    List<Game> gamesList;
     Context context;
     OnGameLongClickListener listener;
 
-    public FavoritesAdapter(List<Games> gamesList, Context context, OnGameLongClickListener listener) {
+    public FavoritesAdapter(List<Game> gamesList, Context context, OnGameLongClickListener listener) {
         this.gamesList = gamesList;
         this.context = context;
         this.listener = listener;

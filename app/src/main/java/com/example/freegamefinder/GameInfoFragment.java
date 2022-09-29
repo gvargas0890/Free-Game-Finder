@@ -1,14 +1,16 @@
 package com.example.freegamefinder;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+
 import android.os.Handler;
 import android.os.Looper;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -17,8 +19,10 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
-public class GameInfoActivity extends AppCompatActivity {
-    SaveUtil saveUtil = new SaveUtil();
+public class GameInfoFragment extends Fragment {
+    View view;
+
+    SaveUtil saving = new SaveUtil();
     private final GamesApi gamesApi = new GamesApi();
     private ImageView ivGameImage;
     private TextView tvGameName;
@@ -33,30 +37,24 @@ public class GameInfoActivity extends AppCompatActivity {
     private Button btnAdd;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_info);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_game_info, container, false);
 
-        ivGameImage = findViewById(R.id.ivGameImage);
-        tvGameName = findViewById(R.id.tvGameName);
-        tvFullDescription = findViewById(R.id.tvFullDescription);
-        tvDeveloper = findViewById(R.id.tvDeveloper);
-        tvPublisher = findViewById(R.id.tvPublisher);
-        tvReleaseDate = findViewById(R.id.tvReleaseDate);
-        tvGameGenre = findViewById(R.id.tvGameGenre);
-        tvGamePlatform = findViewById(R.id.tvGamePlatform);
-        progressBar = findViewById(R.id.progressB);
-        btnPlay = findViewById(R.id.btnPlay);
-        btnAdd = findViewById(R.id.btnAdd);
+        ivGameImage = view.findViewById(R.id.ivGameImage);
+        tvGameName = view.findViewById(R.id.tvGameName);
+        tvFullDescription = view.findViewById(R.id.tvFullDescription);
+        tvDeveloper = view.findViewById(R.id.tvDeveloper);
+        tvPublisher = view.findViewById(R.id.tvPublisher);
+        tvReleaseDate = view.findViewById(R.id.tvReleaseDate);
+        tvGameGenre = view.findViewById(R.id.tvGameGenre);
+        tvGamePlatform = view.findViewById(R.id.tvGamePlatform);
+        progressBar = view.findViewById(R.id.progressB);
+        btnPlay = view.findViewById(R.id.btnPlay);
+        btnAdd = view.findViewById(R.id.btnAdd);
 
-        Intent intent = getIntent();
-        int gameIndex = intent.getIntExtra("game_index", 0);
-
-        progressBar.setVisibility(View.VISIBLE);
-
-        SharedPreferences prefs = getSharedPreferences("", MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        String gameArray = prefs.getString("game", "");
+        Bundle index = getArguments();
+        int gameIndex = index.getInt("game_index", 0);
 
         gamesApi.requestGames(new GamesApi.OnGamesListener() {
             @Override
@@ -64,49 +62,32 @@ public class GameInfoActivity extends AppCompatActivity {
                 new Handler(Looper.getMainLooper()).post(new Runnable() {
                     @Override
                     public void run() {
-                        setTextViews(gamesResponse, gameIndex);
-                        progressBar.setVisibility(View.GONE);
+                        populateGame(gamesResponse, gameIndex);
 
                     }
                 });
-
                 btnPlay.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View view) {
+                    public void onClick(View v) {
                         String url = gamesResponse.getGamesList().get(gameIndex).getGameUrl();
                         Intent i = new Intent(Intent.ACTION_VIEW);
                         i.setData(Uri.parse(url));
                         startActivity(i);
                     }
                 });
-                btnAdd.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                    }
-                });
-
-                btnAdd.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-                        saveUtil.saveFavGame(gameArray, gamesResponse, gameIndex, editor);
-
-                        Toast.makeText(GameInfoActivity.this, gamesResponse.getGamesList().get(gameIndex).getTitle() + " has been added to you list.",
-                                Toast.LENGTH_SHORT).show();
-
-                    }
-                });
             }
+
             @Override
             public void onFailure() {
 
             }
         });
+
+        return view;
     }
 
-    private void setTextViews(GamesResponse gamesResponse, int gameIndex) {
-        Glide.with(GameInfoActivity.this)
+    private void populateGame(GamesResponse gamesResponse, int gameIndex) {
+        Glide.with(view.getContext())
                 .load(gamesResponse.gamesList.get(gameIndex).getThumbnail())
                 .into(ivGameImage);
 

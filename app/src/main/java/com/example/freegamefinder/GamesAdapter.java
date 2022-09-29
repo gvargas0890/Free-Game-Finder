@@ -18,11 +18,11 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 public class GamesAdapter extends RecyclerView.Adapter<GamesAdapter.GamesHolder> {
-    List<Games> gamesList;
+    List<Game> gamesList;
     Context context;
     OnGameClickListener listener;
 
-    public GamesAdapter(List<Games> gamesList, Context context, OnGameClickListener listener) {
+    public GamesAdapter(List<Game> gamesList, Context context, OnGameClickListener listener) {
         this.gamesList = gamesList;
         this.context =  context;
         this.listener = listener;
@@ -88,7 +88,7 @@ public class GamesAdapter extends RecyclerView.Adapter<GamesAdapter.GamesHolder>
         }
     }
     interface OnGameClickListener{
-        void onGameClicked(Games games, int position);
-        void onClickSave(Games games, int position);
+        void onGameClicked(Game games, int position);
+        void onClickSave(Game games, int position);
     }
 }

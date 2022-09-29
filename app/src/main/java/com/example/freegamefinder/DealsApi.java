@@ -39,7 +39,7 @@ public class DealsApi {
 
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                List<Deals> dealsList = new ArrayList<>();
+                List<Deal> dealsList = new ArrayList<>();
                 DealsResponse dealsResponse = new DealsResponse();
 
                 try {
@@ -47,7 +47,7 @@ public class DealsApi {
                     for(int i = 0; i < dealsArray.length(); i++) {
                         JSONObject dealsObject = dealsArray.getJSONObject(i);
 
-                        Deals deals = new Deals();
+                        Deal deals = new Deal();
 
                         String title = dealsObject.optString("title");
                         deals.setTitle(title);

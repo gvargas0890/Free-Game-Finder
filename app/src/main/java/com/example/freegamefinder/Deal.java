@@ -2,7 +2,7 @@ package com.example.freegamefinder;
 
 import android.net.Uri;
 
-public class Deals {
+public class Deal {
     String title;
     String salePrice;
     String normalPrice;

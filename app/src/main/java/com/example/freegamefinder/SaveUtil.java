@@ -8,7 +8,7 @@ import org.json.JSONObject;
 
 import java.util.List;
 
-public class Saving {
+public class SaveUtil {
 
     public void saveFavGame(String gameArray, GamesResponse gamesResponse, int gameIndex, android.content.SharedPreferences.Editor editor) {
         if(!gameArray.isEmpty()) {
@@ -43,13 +43,13 @@ public class Saving {
         }
     }
 
-    public void setGamesSavedList(String gameArray, List<Games> gamesList) {
+    public void populateGameArray(String gameArray, List<Game> gamesList) {
         try {
             JSONArray favGamesArray = new JSONArray(gameArray);
             for(int i = 0; i < favGamesArray.length(); i++) {
                 JSONObject gamesObjects = favGamesArray.getJSONObject(i);
 
-                Games games = new Games();
+                Game games = new Game();
 
                 String title = gamesObjects.optString("title");
                 games.setTitle(title);
