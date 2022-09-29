@@ -48,11 +48,6 @@ public class MainActivity extends AppCompatActivity {
 
         progressBar.setVisibility(View.VISIBLE);
 
-        List<String> strings = new ArrayList<>();
-        strings.add("shooter");
-        strings.add("strategy");
-
-
         SharedPreferences prefs = getSharedPreferences("", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         String gameArray = prefs.getString("game", "");
